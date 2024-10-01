@@ -1,3 +1,3 @@
 Becky Haworth
 she/her
-Environmental Policy
+Environmental Policy and Management
