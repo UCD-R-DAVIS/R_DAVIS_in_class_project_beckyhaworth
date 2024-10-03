@@ -70,4 +70,6 @@ elephant2_lb > elephant1_lb #true
 
 myelephants <- c(elephant1_lb, elephant2_lb)
 
-which(myelephants == max(myelephants)) #
+which(myelephants == max(myelephants)) #which of my elephants is bigger...answer 2 (meaning the second one)
+
+
