@@ -14,7 +14,7 @@ weight_30_60
 #answer ... slightly different than what I did, tibble has fewer rows
 #i think %in% includes 30 and 60, whereas > and < dont 
 surveys %>% 
-  filter(weight > 30 & weight < 60)
+  filter(weight > 30 & weight < 60) %>%  head(n=6)
 
 #Create a new tibble showing the maximum weight for each species + sex combination and name it biggest_critters. 
 #Sort the tibble to take a look at the biggest and smallest species + sex combinations. 
@@ -56,7 +56,7 @@ surveys_avg_weight <- surveys %>%
   mutate(ave_weight = mean(weight)) %>% 
   select(species_id, sex, weight, ave_weight)
 
-#other option to do same thing (but summarized, not including )
+#other option to do same thing (but summarized, not including all the required columns)
 surveys_avg_weight2 <- surveys %>%
   filter(!is.na(weight)) %>% 
   group_by(species_id, sex) %>% 
