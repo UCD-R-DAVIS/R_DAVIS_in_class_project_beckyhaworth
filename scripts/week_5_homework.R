@@ -21,21 +21,27 @@ surveys_wide
 surveys <- read_csv("data/portal_data_joined.csv")
 summary(surveys$weight)
 
-weight_cat <- ifelse(surveys$weight <= 20,
-                     yes = "small")
+surveys %>%
+  mutate(weight_cat = case_when(
+    weight >= 48 ~ "large",
+    weight > 20 & weight < 48 ~ "medium",
+    is.na(weight) ~ NA_character_,
+    TRUE ~ "small"
+    )) %>% 
+  select(weight, weight_cat)
 
+surveys %>%
+  mutate(weight_cat = case_when(
+    weight >= 48 ~ "large",
+    weight > 20 & weight < 48 ~ "medium",
+    weight <= 20 ~ "small"
+  )) %>% 
+  select(weight, weight_cat) 
 
 surveys %>% 
-  mutate(weight_cat = case_when(
-    weight > 48 ~ "large",
-    weight < 20 ~ "small",
-    TRUE = ~ "medium")) %>% 
-  group_by(weight_cat)
-
-    
-surveys
-
-
+  mutate(weight_cat = ifelse(weight < 20,'small', 
+                             ifelse(weight > 48, 'large', 'medium'))) %>% 
+  select(weight, weight_cat)
 
 
 #BONUS: How might you soft code the values (i.e. not type them in manually) of the 1st and 3rd quartile into your conditional statements in question 2?
