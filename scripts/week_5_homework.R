@@ -8,6 +8,8 @@ surveys <- surveys %>%
   filter((!is.na(hindfoot_length))) %>% 
   group_by(genus, plot_type) %>% 
   summarize(mean_hindfoot = mean(hindfoot_length))
+
+surveys
   
 surveys_wide <- surveys %>%
     pivot_wider(id_cols = 'genus',
@@ -36,7 +38,7 @@ surveys %>%
     weight > 20 & weight < 48 ~ "medium",
     weight <= 20 ~ "small"
   )) %>% 
-  select(weight, weight_cat) 
+  select(weight, weight_cat)
 
 surveys %>% 
   mutate(weight_cat = ifelse(weight < 20,'small', 
@@ -45,3 +47,13 @@ surveys %>%
 
 
 #BONUS: How might you soft code the values (i.e. not type them in manually) of the 1st and 3rd quartile into your conditional statements in question 2?
+
+sum_stats <- summary(surveys$weight)
+
+surveys %>%
+  mutate(weight_cat = case_when(
+    weight >= sum_stats[5] ~ "large",
+    weight > sum_stats[2] & weight < sum_stats[5] ~ "medium",
+    is.na(weight) ~ NA_character_,
+    TRUE ~ "small"
+  )) 
