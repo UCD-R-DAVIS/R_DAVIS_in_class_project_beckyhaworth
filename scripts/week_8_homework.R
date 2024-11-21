@@ -46,4 +46,4 @@ ggplot(data = MeanTemp, mapping = aes(x = `month(mloa$datetimeLocal, label = TRU
   ylab("Average Temperature (degrees C)") + 
   ggtitle("Mean Hourly Monthly Temperature")
 
-#would be a good time to use a circular color palette because time 0 and 23 are next to each other in time but opposite ends of most color palettes. when they should be closely related.
+#would be a good time to use a circular color palette because time 0 and 23 are next to each other in time but opposite ends of most color palettes. when they should be closely related. Khroma package (cyclic color maps)
