@@ -97,7 +97,7 @@ library(tidyverse)
 # think about output, but instead of creating a blank output, you can just use the specific function
 
 # basic function
-map(iris, mean) # warning of NA for species
+map(iris, mean)# warning of NA for species
 # default is that the output is a list
 
 map_df(iris, mean) # df in, df out, anything that follows the function is the desired output
